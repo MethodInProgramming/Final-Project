@@ -5,12 +5,12 @@
 #include "../TextBox/TextBox.h"
 #include <Windows.h>
 
-class EventEngine
+class EventHandler
 {
 public:
-	EventEngine(DWORD input = STD_INPUT_HANDLE, DWORD output = STD_OUTPUT_HANDLE);
+	EventHandler(DWORD input = STD_INPUT_HANDLE, DWORD output = STD_OUTPUT_HANDLE);
 	void run(Control &c);
-	virtual ~EventEngine();
+	virtual ~EventHandler();
 private:
 	void moveFocus(Control &main, Control *focused);
 

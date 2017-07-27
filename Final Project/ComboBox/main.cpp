@@ -1,5 +1,5 @@
 #include "ComboBox.h"
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 
 int main(VOID) {
 	Panel p(30, 60);
@@ -17,7 +17,7 @@ int main(VOID) {
 	cName.setBackGround(BackgroundColor::Orange);
 	cName.setForeground(ForegroundColor::Blue);
 	p.addControl(&cName, 15, 15);
-	EventEngine engine;
-	engine.run(p);
+	EventHandler Handler;
+	Handler.run(p);
 	return 0;
 }

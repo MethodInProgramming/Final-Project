@@ -18,7 +18,7 @@ class Control
 	BackgroundColor background;
 	BorderType borderType;
 protected:
-	bool isfocusable;
+	bool ifFocusable;
 public:
 	Control(int width);
 	virtual void show();

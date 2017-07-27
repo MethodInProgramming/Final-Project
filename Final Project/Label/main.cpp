@@ -1,5 +1,5 @@
 #include "Label.h"
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 
 using namespace std;
 
@@ -7,7 +7,7 @@ int main(void) {
 
 	Label label(20, "Or Adar");
 	label.setLocation({ 20, 30 });
-	EventEngine engine;
-	engine.run(label);
+	EventHandler Handler;
+	Handler.run(label);
 	return 0;
 }

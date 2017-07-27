@@ -3,7 +3,7 @@
 
 
 Control::Control(int _width) : 
-	width(_width), isFocused(false), isfocusable(true), visible(true), height(1), layer(0){
+	width(_width), isFocused(false), ifFocusable(true), visible(true), height(1), layer(0){
 	setBorder(BorderType::None);
 	setLocation({ 0, 0 });
 	width += 2;
@@ -14,11 +14,11 @@ Control::Control(int _width) :
 
 void Control::show(){
 	visible = true;
-	isfocusable = true;
+	ifFocusable = true;
 }
 void Control::hide(){
 	visible = false;
-	isfocusable = false;
+	ifFocusable = false;
 }
 
 int Control::getLayer() {
@@ -141,7 +141,7 @@ void Control::mousePressed(short x, short y, bool isLeft){
 }
 
 bool Control::canGetFocus(){
-	return isfocusable;
+	return ifFocusable;
 }
 bool Control::validSpace(Control* c){
 

@@ -5,7 +5,7 @@
 #include "../Graphics/Graphics.h"
 #include "../TextBox/TextBox.h"
 #include "../RadioList/RadioList.h"
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 #include "../NumericBox/NumericBox.h"
 #include "../MessegeBox/MsgBox.h"
 
@@ -28,25 +28,18 @@ private:
 int main(void){
 
 	Label lName(20, "First Name: ");
-	//FName.setText("Name: ");
-
 	Label lLastName(20, "Last Name: ");
-	//lLastName.setValue("Last Name: ");
 	Label lCity(20, "Company:");
-	//lCity.setValue("City:");
 	Label lSex(20, "Sex:");
-	//lSex.setValue("Sex:");
 	Label lFavoritesMovies(20, "Favorive Movies: ");
-	//lFavoritesMovies.setValue("Interests:");
 	Label lAge(20, "Age:");
-	//lAge.setValue("Age:");
 	TextBox tName(20);
 	tName.setValue("Gal");
 	tName.setBorder(BorderType::Double);
 	TextBox tLastName(25);
 	tLastName.setValue("Amitai");
 	tLastName.setBorder(BorderType::Double);
-	ComboBox cGenre(20, { "DC", "Marvel", "WB" });
+	ComboBox cGenre(20, { "DC", "Marvel", "WB","Sony","Paramount" });
 	cGenre.setSelectedIndex(1);
 	cGenre.setBorder(BorderType::Single);
 	RadioList rSex(8, 15, { "Male", "Female" });
@@ -71,11 +64,11 @@ int main(void){
 
 
 	Panel main(50, 70);
-	main.addControl(&msgBox, 15, 15);
-	main.addControl(&lName, 1, 2);
-	main.addControl(&lLastName, 1, 5);
-	main.addControl(&lCity, 1, 8);
-	main.addControl(&lSex, 1, 13);
+	main.addControl(&msgBox, 16, 16);
+	main.addControl(&lName, 2, 3);
+	main.addControl(&lLastName, 2, 6);
+	main.addControl(&lCity, 2, 9);
+	main.addControl(&lSex, 2, 14);
 	main.addControl(&lFavoritesMovies, 1, 21);
 	main.addControl(&lAge, 1, 32);
 	main.addControl(&tName, 25, 2);
@@ -85,10 +78,15 @@ int main(void){
 	main.addControl(&clInterests, 25, 21);
 	main.addControl(&nAge, 25, 32);
 
-	main.addControl(&bSubmit, 1, 35);
+	main.addControl(&bSubmit, 27, 39);
 	Control::setFocus(&tName);
-	EventEngine engine;
-	engine.run(main);
+	EventHandler Handler;
+	Handler.run(main);
 	return 0;
 
 }
+
+
+//Created by Or Adar , Yossi Efraim, Gal Amitai and Uri Portnoy
+//Method in Software Engineering
+//Dr. Rash Amit, Mr. Algawi Asaf

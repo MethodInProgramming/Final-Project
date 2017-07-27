@@ -1,4 +1,4 @@
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 #include "NumericBox.h"
 
 
@@ -11,6 +11,6 @@ int main(void) {
 	panel.setLocation({ 3, 0 });
 	panel.setBorder(BorderType::Double);
 	panel.addControl(&box, 5, 5);
-	EventEngine engine;
-	engine.run(panel);
+	EventHandler Handler;
+	Handler.run(panel);
 }

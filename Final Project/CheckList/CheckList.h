@@ -20,10 +20,10 @@ protected:
 	//we need to override only the enter click
 	void onEnterKey();
 public:
-	CheckList(int height, int width, vector<string> options);
+	CheckList(int height, int width, vector<string> options); // checklist constructor
 	vector<size_t> getSelectedIndices(); 
 	void selectIndex(size_t index);
-	void deselectIndex(size_t index);
+	void disableIndex(size_t index);
 	void mousePressed(short, short, bool);
 };
 

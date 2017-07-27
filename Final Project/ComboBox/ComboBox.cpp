@@ -1,5 +1,5 @@
 #include "ComboBox.h"
-
+#include <iostream>
 
 ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), width, options), 
 						closeHeight(5), isOpen(false), choosenIndex(0){

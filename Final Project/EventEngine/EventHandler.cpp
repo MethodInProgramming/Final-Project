@@ -1,13 +1,13 @@
-#include "EventEngine.h"
+#include "EventHandler.h"
 
-EventEngine::EventEngine(DWORD input, DWORD output)
+EventHandler::EventHandler(DWORD input, DWORD output)
 	: _console(GetStdHandle(input)), _graphics(output)
 {
 	GetConsoleMode(_console, &_consoleMode);
 	SetConsoleMode(_console, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
 }
 
-void EventEngine::run(Control &c)
+void EventHandler::run(Control &c)
 {
 	for (bool redraw = true;;)
 	{
@@ -68,12 +68,12 @@ void EventEngine::run(Control &c)
 	}
 }
 
-EventEngine::~EventEngine()
+EventHandler::~EventHandler()
 {
 	SetConsoleMode(_console, _consoleMode);
 }
 
-void EventEngine::moveFocus(Control &main, Control *focused)
+void EventHandler::moveFocus(Control &main, Control *focused)
 {
 	vector<Control*> controls;
 	main.getAllControls(controls);

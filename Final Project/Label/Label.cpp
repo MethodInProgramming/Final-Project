@@ -3,7 +3,7 @@
 
 Label::Label(int width, string value):Control(width)
 {
-	isfocusable = false;
+	ifFocusable = false;
 	if (width - value.size() < 2) this->value = value;
 	else {
 		this->value = makeStringInTheMiddle(width, value);

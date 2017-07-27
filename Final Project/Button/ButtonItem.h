@@ -7,7 +7,7 @@ using namespace std;
 
 class ButtonItem : public Button
 {
-	string chkedText;
+	string chekeForText;
 	bool isCheck;
 	size_t index;
 public:

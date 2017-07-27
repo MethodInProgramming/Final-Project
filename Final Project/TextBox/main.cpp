@@ -1,5 +1,5 @@
 #include <string>
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 #include "TextBox.h"
 #include "../Panel/Panel.h"
 using namespace std;
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	Control::setFocus(&tName);
 	p.setBorder(BorderType::Double);
 	p.addControl(&tName, 10, 20);
-	EventEngine engine;
-	engine.run(p);
+	EventHandler Handler;
+	Handler.run(p);
 	return 0;
 }

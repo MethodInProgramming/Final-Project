@@ -1,22 +1,21 @@
 #include "CheckList.h"
-#include "../EventEngine/EventEngine.h"
+#include "../EventHandler/EventHandler.h"
 
 int main(VOID){
-	Panel p(25, 50);
+	Panel p(25, 50);				//set location for the panel
 	p.setLocation({ 10, 10 });
 	p.setBorder(BorderType::Single);
 	vector<string> strings;
-	strings.push_back("aba");
-	strings.push_back("fsdf");
-	strings.push_back("khj");
-	strings.push_back("werewr");
+	strings.push_back("Or");
+	strings.push_back("Gal");
+	strings.push_back("Yossi");
+	strings.push_back("Uri");
 	CheckList cName(14,30,strings);
 	cName.setBorder(BorderType::Double);
 	Control::setFocus(&cName);
 	cName.setBackGround(BackgroundColor::Green);
-	//cName.setForeground(ForegroundColor::Blue);
 	p.addControl(&cName, 15, 15);
-	EventEngine engine;
-	engine.run(p);
+	EventHandler Handler;
+	Handler.run(p);
 	return 0;
 }

@@ -92,9 +92,6 @@
     <ProjectReference Include="..\Control\Control.vcxproj">
       <Project>{34d682ea-c8c1-4748-a8b8-cd42dddd7349}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\EventEngine\EventEngine.vcxproj">
-      <Project>{53df0d8f-b144-4205-bef4-79dbf90ec735}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
       <Project>{bbeea1e1-85e6-4106-94ef-4c11e2e1dc61}</Project>
     </ProjectReference>

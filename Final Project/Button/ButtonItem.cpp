@@ -2,7 +2,7 @@
 
 
 ButtonItem::ButtonItem(string text, int width, size_t index)
-	: Button(width, "[ ] " + text), chkedText("[X] " + text), index(index), isCheck(false){}
+	: Button(width, "[ ] " + text), chekeForText("[X] " + text), index(index), isCheck(false){}
 
 bool ButtonItem::isChecked(){
 	return isCheck;
@@ -28,8 +28,8 @@ void ButtonItem::draw(Graphics &graphics, int x, int y, size_t layer){
 void ButtonItem::toggle(){
 	isCheck = !isCheck;
 	string tmp = text;
-	text = chkedText;
-	chkedText = tmp;
+	text = chekeForText;
+	chekeForText = tmp;
 }
 
 

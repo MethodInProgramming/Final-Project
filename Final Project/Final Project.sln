@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Control", "Control\Control.vcxproj", "{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EventEngine", "EventEngine\EventEngine.vcxproj", "{53DF0D8F-B144-4205-BEF4-79DBF90EC735}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "Graphics\Graphics.vcxproj", "{BBEEA1E1-85E6-4106-94EF-4C11E2E1DC61}"
 EndProject
@@ -38,6 +36,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Form", "Form\Form.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testing", "Testing\Testing.vcxproj", "{70477615-E2EE-4FD7-BEEB-8D5B758CDE5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EventHandler", "EventHandler\EventHandler.vcxproj", "{53DF0D8F-B144-4205-BEF4-79DBF90EC735}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -52,12 +52,6 @@ Global
 		{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}.Release|Win32.ActiveCfg = Release|Win32
 		{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}.Release|Win32.Build.0 = Release|Win32
 		{34D682EA-C8C1-4748-A8B8-CD42DDDD7349}.Release|x64.ActiveCfg = Release|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|Win32.ActiveCfg = Debug|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|Win32.Build.0 = Debug|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|x64.ActiveCfg = Debug|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|Win32.ActiveCfg = Release|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|Win32.Build.0 = Release|Win32
-		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|x64.ActiveCfg = Release|Win32
 		{BBEEA1E1-85E6-4106-94EF-4C11E2E1DC61}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BBEEA1E1-85E6-4106-94EF-4C11E2E1DC61}.Debug|Win32.Build.0 = Debug|Win32
 		{BBEEA1E1-85E6-4106-94EF-4C11E2E1DC61}.Debug|x64.ActiveCfg = Debug|Win32
@@ -132,6 +126,12 @@ Global
 		{70477615-E2EE-4FD7-BEEB-8D5B758CDE5A}.Release|Win32.ActiveCfg = Release|Win32
 		{70477615-E2EE-4FD7-BEEB-8D5B758CDE5A}.Release|Win32.Build.0 = Release|Win32
 		{70477615-E2EE-4FD7-BEEB-8D5B758CDE5A}.Release|x64.ActiveCfg = Release|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|Win32.Build.0 = Debug|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Debug|x64.ActiveCfg = Debug|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|Win32.ActiveCfg = Release|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|Win32.Build.0 = Release|Win32
+		{53DF0D8F-B144-4205-BEF4-79DBF90EC735}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

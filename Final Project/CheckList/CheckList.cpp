@@ -28,7 +28,7 @@ void CheckList::selectIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
 
-void CheckList::deselectIndex(size_t index){
+void CheckList::disableIndex(size_t index){
 	static_cast<ButtonItem*>(controls[index])->toggle();
 }
 

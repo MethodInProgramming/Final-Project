@@ -4,7 +4,7 @@
 MsgBox::MsgBox(int height, int width) : Panel(height, width)
 {
 	setLayer(2);
-	isfocusable = false;
+	ifFocusable = false;
 	Label *title = new Label(width - 2, "Are you Sure?");
 	Label *text = new Label(width - 2, "Press OK");
 	Button *okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK!"));
