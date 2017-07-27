@@ -26,7 +26,6 @@ void Button::mousePressed(short x, short y, bool isLeft){
 
 void Button::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
-		//add the same functional like mouse press
 		listener->mousePressed(*this, 0, 0, true);
 	}
 }

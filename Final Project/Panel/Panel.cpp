@@ -27,12 +27,10 @@ bool Panel::validSpace(Control* c) {
 	short controllerTop = c->getTop();
 	short controllerLeft = c->getLeft();
 
-	//checking if in the panel limits
 	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
 	if ((controllerTop + c->getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
 	if ((controllerLeft + c->getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
 
-	//checking if posision is clear against all the other controllers in the panel
 	if (c->getLayer() == 2) return true;
 	return validSpaceWithControllers(c);
 }
@@ -51,12 +49,11 @@ bool Panel::validSpaceWithControllers(Control* c) {
 }
 
 void Panel::mousePressed(short x, short y, bool isLeft) {
-	//check if click is in the panel limits
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
 	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
 
 	int size = controls.size();
-	for (int i = 0; i < size; i++) {//check which controller owns the mouse position
+	for (int i = 0; i < size; i++) {
 		controls[i]->mousePressed(x, y, isLeft);
 	}
 }

@@ -7,12 +7,10 @@ ButtonItem::ButtonItem(string text, int width, size_t index)
 bool ButtonItem::isChecked(){
 	return isCheck;
 }
-
 void ButtonItem::draw(Graphics &graphics, int x, int y, size_t layer){
 	if (getLayer() != layer) return;
 	Control::draw(graphics, getLeft(), getTop(), layer);
 	if (isFocus()){
-		//insidout
 		graphics.setBackground(graphics.convertToColor(getForeground()));
 		graphics.setForeground(graphics.convertToColor(getBackGround()));
 	} else if (isChecked()){
@@ -31,10 +29,7 @@ void ButtonItem::toggle(){
 	text = chekeForText;
 	chekeForText = tmp;
 }
-
-
 size_t ButtonItem::getIndex(){
 	return index;
 }
-
 ButtonItem::~ButtonItem(){}

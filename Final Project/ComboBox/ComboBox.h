@@ -4,8 +4,6 @@
 #include "../Button/ButtonItem.h"
 #include "../Label/Label.h"
 
-
-
 class ComboBox : public ListPanel
 {
 	struct SelectListener : public MouseListener {
@@ -39,8 +37,7 @@ class ComboBox : public ListPanel
 	void onUpKey();
 	void onEnterKey();
 public:
-	//add plus btn and label - give the btn listener and remember whe label index for edit the text
-	ComboBox(int width, vector<string> options); //need to caculat the heigth and send to Panel const.
+	ComboBox(int width, vector<string> options);
 	size_t getSelectedIndex();
 	void setSelectedIndex(size_t);
 	void draw(Graphics &graphics, int, int, size_t);
@@ -49,7 +46,6 @@ public:
 	void unfocus();
 	void openList();
 	void closeList();
-
 	~ComboBox();
 };
 

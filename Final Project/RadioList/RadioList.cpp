@@ -9,8 +9,6 @@ RadioList::RadioList(int height, int width, vector<string> options) : ListPanel(
 		btn->setBorder(BorderType::Single);
 		SelectListener* lsnr = new SelectListener(*this);
 		btn->addListener(*lsnr);
-
-		//add it in the right place in the ListPanel include borders
 		addControl(btn, getBodyLeft(), getBodyTop() + (i * 3));
 	}
 }
@@ -40,8 +38,6 @@ void RadioList::setSelectedIndex(size_t index) {
 
 void RadioList::mousePressed(short x, short y, bool isLeft) {
 	Control::mousePressed(x, y, isLeft);
-
-	//pass the click to the childrens
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
 		controls[i]->mousePressed(x, y, isLeft);

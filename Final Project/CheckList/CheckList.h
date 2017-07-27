@@ -17,7 +17,6 @@ class CheckList : public ListPanel
 		Control& _c;
 	};
 protected:
-	//we need to override only the enter click
 	void onEnterKey();
 public:
 	CheckList(int height, int width, vector<string> options); // checklist constructor

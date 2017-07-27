@@ -8,13 +8,10 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 	openHeight = (len + 1) * 3 + 2;
 	setHeight(openHeight);
 	int wid = getWidth();
-	//create the label
 	Label *choosen = new Label(getWidth() - 7, options[0]);
 	choosen->setLayer(1);
 	choosen->setBorder(BorderType::Single);
 	addControl(choosen, getBodyLeft(), getBodyTop());
-
-	//create the open/close button
 	Button *toggleBtn = new Button(1, "+");
 	toggleBtn->setBackGround(BackgroundColor::Black);
 	toggleBtn->setBorder(BorderType::Single);
@@ -23,7 +20,6 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 	toggleBtn->setLayer(1);
 	addControl(toggleBtn, getBodyLeft() + getWidth() - 5, getBodyTop());
 
-	//create the options
 	string str = string(Control::getWidth(),' ');
 	for (int i = 0; i < len; i++) {
 		string toInsert = (options[i]+str).substr(0, getWidth() - options[i].length() - 3);

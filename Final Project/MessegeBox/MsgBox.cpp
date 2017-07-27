@@ -18,11 +18,10 @@ MsgBox::MsgBox(int height, int width) : Panel(height, width)
 	okBtn->setBorder(BorderType::Single);
 	addControl(title, 1,1);
 	addControl(text,1,4);
-	addControl(okBtn, (width / 4), height-4);//Postion Of Button
+	addControl(okBtn, (width / 4), height-4);
 }
 
 void MsgBox::mousePressed(short x, short y, bool isLeft) {
-	//check if click
 	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth()) ||
 		y < this->getTop() || (y > this->getTop() + this->getHeight())) {
 		if (isVisible()){

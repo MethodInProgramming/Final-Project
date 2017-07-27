@@ -16,7 +16,6 @@ struct MyListener : public MouseListener
 	MyListener(Control &c) : _c(c) { }
 	void mousePressed(Control& b, short x, short y, bool isLeft)
 	{
-		//Panel::toggleMsgBox();
 		_c.show();
 		Control::setFocus(&_c);
 	}

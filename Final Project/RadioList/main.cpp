@@ -14,7 +14,6 @@ int main(VOID) {
 	cName.setBorder(BorderType::Double);
 	Control::setFocus(&cName);
 	cName.setBackGround(BackgroundColor::Green);
-	//cName.setForeground(ForegroundColor::Blue);
 	p.addControl(&cName, 15, 15);
 	EventHandler Handler;
 	Handler.run(p);

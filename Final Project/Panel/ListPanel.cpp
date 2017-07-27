@@ -34,7 +34,7 @@ int ListPanel::itemInFocus(){
 void ListPanel::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
 		onEnterKey();
-	} else if (click == VK_DOWN || click == VK_NUMPAD2) { // maybe add click == VK_TAB
+	} else if (click == VK_DOWN || click == VK_NUMPAD2) {
 		onDownKey();
 	}
 	else if (click == VK_UP || click == VK_NUMPAD8) {
@@ -65,7 +65,7 @@ void ListPanel::onUpKey(){
 	controls[item]->focus();
 }
 
-void ListPanel::onEnterKey(){} //noImpl.
+void ListPanel::onEnterKey(){}
 
 void ListPanel::switchFocus(int indx){
 	int tmp = itemInFocus();

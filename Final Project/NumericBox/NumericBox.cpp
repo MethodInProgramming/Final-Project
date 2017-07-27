@@ -7,17 +7,11 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 	value = min;
 	MinusListener* minusListener = new MinusListener(*this);
 	PlusListener* plusListener = new PlusListener(*this);
-	//Create minus btn and attach listener.
 	Button *minusBtn = new Button(1,"-");
 	minusBtn->addListener(*minusListener);
-	//minusBtn->setHeight(1);
-	//Create label the number starts from the minimum.
 	Label *labelVal = new Label( width - 8 ,to_string(min));
 	labelVal->setForeground(getForeground());
-	
-	//Create '+' btn and attach listener.
 	Button *plusBtn = new Button(1,"+");
-	//plusBtn->setHeight(1);
 	plusBtn->addListener(*plusListener);
 	
 	addControl(minusBtn, getBodyLeft(), getBodyTop());
