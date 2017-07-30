@@ -10,8 +10,8 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 	Button *minusBtn = new Button(1,"-");
 	minusBtn->addListener(*minusListener);
 	Label *labelVal = new Label( width - 8 ,to_string(min));
-	labelVal->setForeground(getForeground());
 	Button *plusBtn = new Button(1,"+");
+	labelVal->setForeground(getForeground());
 	plusBtn->addListener(*plusListener);
 	
 	addControl(minusBtn, MoveBodyLeft(), MoveBodyTop());
@@ -22,14 +22,7 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 }
 
 
-void NumericBox::setValue(int val) {
-	
-	if ( val < min || val >max) return;
-	else {
-		static_cast<Label*>(controls[1])->setValue(to_string(val));
-		string num1 = to_string(val);
-	}
-};
+
 int NumericBox::getValue() {	
 	string val = static_cast<Label*>(controls[1])->getValue();
 	int size = val.length();
@@ -40,4 +33,13 @@ int NumericBox::getValue() {
 		}
 	}
 	return stoi(num);
+};
+
+void NumericBox::setValue(int val) {
+
+	if (val < min || val >max) return;
+	else {
+		static_cast<Label*>(controls[1])->setValue(to_string(val));
+		string num1 = to_string(val);
+	}
 };

@@ -13,11 +13,13 @@ RadioList::RadioList(int height, int width, vector<string> options) : ListPanel(
 	}
 }
 
-void RadioList::onEnterKey() {
-	if (itemInFocus() == -1) return;
-	setSelectedIndex(itemInFocus());
+void RadioList::mousePressed(short x, short y, bool left) {
+	Control::mousePressed(x, y, left);
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		controls[i]->mousePressed(x, y, left);
+	}
 }
-
 
 size_t RadioList::getSelectedIndex() {
 	
@@ -36,11 +38,10 @@ void RadioList::setSelectedIndex(size_t index) {
 	switchFocus(index);
 }
 
-void RadioList::mousePressed(short x, short y, bool isLeft) {
-	Control::mousePressed(x, y, isLeft);
-	int size = controls.size();
-	for (int i = 0; i < size; i++) {
-		controls[i]->mousePressed(x, y, isLeft);
-	}
+void RadioList::onEnterKey() {
+	if (itemInFocus() == -1) return;
+	setSelectedIndex(itemInFocus());
 }
+
+
 

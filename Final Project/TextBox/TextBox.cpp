@@ -32,14 +32,14 @@ int TextBox::getCurserPosition() {
 	return curserPosition;
 }
 
-void TextBox::moveCurser(Graphics g){
+void TextBox::moveCurser(Graphics gra){
 	if (getCurserPosition() > getWidth()-2){
-		g.moveTo(MoveBodyLeft() + getCurserPosition() - 2, MoveBodyTop());
+		gra.moveTo(MoveBodyLeft() + getCurserPosition() - 2, MoveBodyTop());
 	}
 	else if (curserPosition == 1){
-		g.moveTo(MoveBodyLeft(), MoveBodyTop());
+		gra.moveTo(MoveBodyLeft(), MoveBodyTop());
 	} else {
-		g.moveTo(MoveBodyLeft() + getCurserPosition() - 1, MoveBodyTop());
+		gra.moveTo(MoveBodyLeft() + getCurserPosition() - 1, MoveBodyTop());
 	}
 }
 
@@ -52,19 +52,19 @@ void TextBox::keyDown(WORD kind, CHAR c) {
 		case VK_RETURN:
 			break;
 
-		case VK_RIGHT:
-			moveRight();
-			break;
-
-		case VK_LEFT:
-			moveLeft();
-			break;
-
 		case VK_RWIN:
 			moveRight();
 			break;
 
 		case VK_LWIN:
+			moveLeft();
+			break;
+
+		case VK_RIGHT:
+			moveRight();
+			break;
+
+		case VK_LEFT:
 			moveLeft();
 			break;
 
@@ -93,10 +93,7 @@ void TextBox::moveRight(){
 	curserPosition++;
 }
 
-void TextBox::moveLeft(){
-	if (curserPosition ==  1) return;
-	curserPosition--;
-}
+
 
 void TextBox::deleteLeft(){
 	if (curserPosition == 1 || !value.length()) {
@@ -109,6 +106,11 @@ void TextBox::deleteLeft(){
 
 void TextBox::deleteLast(){
 	value.erase(getWidth() - 2, 1);
+}
+
+void TextBox::moveLeft() {
+	if (curserPosition == 1) return;
+	curserPosition--;
 }
 
 void TextBox::deleteRight(){

@@ -11,8 +11,8 @@ MsgBox::MsgBox(int height, int width) : Panel(height, width)
 	CloseListener *closeListener = new CloseListener(*this);
 	okBtn->addListener(*closeListener);
 	title->setLayer(2);
-	text->setLayer(2);
 	okBtn->setLayer(2);
+	text->setLayer(2);
 	title->setBorder(BorderType::Single);
 	text->setBorder(BorderType::Single);
 	okBtn->setBorder(BorderType::Single);
@@ -32,16 +32,17 @@ void MsgBox::mousePressed(short x, short y, bool isLeft) {
 	controls[2]->mousePressed(x, y, isLeft);
 }
 
-void MsgBox::setText(string text) {
-	static_cast<Label*>(controls[1])->setValue(text);
+
+void MsgBox::setTitle(string content) {
+	static_cast<Label*>(controls[0])->setValue(content);
 }
 
-void MsgBox::setTitle(string text) {
-	static_cast<Label*>(controls[0])->setValue(text);
+void MsgBox::setText(string content) {
+	static_cast<Label*>(controls[1])->setValue(content);
 }
 
-void MsgBox::keyDown(WORD click, CHAR chr){
-	if (click == VK_RETURN) {
+void MsgBox::keyDown(WORD enter, CHAR chr){
+	if (enter == VK_RETURN) {
 		hide();
 	}
 }

@@ -8,8 +8,8 @@ int main(void) {
 	NumericBox box(20, 10, 100);
 	box.setBackGround(BackgroundColor::Red);
 	box.setForeground(ForegroundColor::White);
-	panel.setLocation({ 3, 0 });
 	panel.setBorder(BorderType::Double);
+	panel.setLocation({ 3, 0 });
 	panel.addControl(&box, 5, 5);
 	EventHandler Handler;
 	Handler.run(panel);

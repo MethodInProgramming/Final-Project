@@ -9,7 +9,6 @@ protected:
 	int itemInFocus();
 	void switchFocus(int indx);
 	void clearAllFocus();
-	//In Inherited need to edit these three functions and not the KeyDown() 
 	virtual void onDownKey();
 	virtual void onUpKey();
 	virtual void onEnterKey();

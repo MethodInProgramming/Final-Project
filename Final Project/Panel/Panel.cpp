@@ -21,26 +21,26 @@ bool Panel::addControl(Control *control, short x, short y) {
 	return false;
 }
 
-bool Panel::validSpace(Control* c) {
+bool Panel::validSpace(Control* cont) {
 	short bodyTop = MoveBodyTop();
 	short bodyLeft = MoveBodyLeft();
-	short controllerTop = c->MoveTop();
-	short controllerLeft = c->MoveLeft();
+	short controllerTop = cont->MoveTop();
+	short controllerLeft = cont->MoveLeft();
 
 	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
-	if ((controllerTop + c->getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
-	if ((controllerLeft + c->getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
+	if ((controllerTop + cont->getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
+	if ((controllerLeft + cont->getWidth() - 2) > (bodyLeft + this->getWidth() - 2)) return false;
 
-	if (c->getLayer() == 2) return true;
-	return validSpaceWithControllers(c);
+	if (cont->getLayer() == 2) return true;
+	return validSpaceWithControllers(cont);
 }
 
-bool Panel::validSpaceWithControllers(Control* c) {
+bool Panel::validSpaceWithControllers(Control* cont) {
 	int size = controls.size();
 	bool valid = true;
 	for (int i = 0; i < size; i++) {
 		if (controls[i]->getLayer() == 2) continue;
-		if (!controls[i]->validSpace(c)) {
+		if (!controls[i]->validSpace(cont)) {
 			valid = false;
 			break;
 		}
@@ -48,15 +48,7 @@ bool Panel::validSpaceWithControllers(Control* c) {
 	return valid;
 }
 
-void Panel::mousePressed(short x, short y, bool isLeft) {
-	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth())) return;
-	if (y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) return;
 
-	int size = controls.size();
-	for (int i = 0; i < size; i++) {
-		controls[i]->mousePressed(x, y, isLeft);
-	}
-}
 
 void Panel::draw(Graphics &graphics, int x, int y, size_t layer) {
 	if (!isVisible()) return;
@@ -72,6 +64,16 @@ void Panel::draw(Graphics &graphics, int x, int y, size_t layer) {
 	graphics.resetColors();
 }
 
+void Panel::mousePressed(short x, short y, bool left) {
+	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth())) return;
+	if (y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) return;
+
+	int size = controls.size();
+	for (int i = 0; i < size; i++) {
+		controls[i]->mousePressed(x, y, left);
+	}
+}
+
 void Panel::setLocation(COORD coord) {
 	COORD tmp = {MoveBodyLeft(),MoveBodyTop()};
 	short moveVer, moveHer;
@@ -84,12 +86,13 @@ void Panel::setLocation(COORD coord) {
 	}
 }
 
-void Panel::openMsgBtn(){
-	isMsgBoxOpen = true;
-}
 
 void Panel::closeMsgBtn(){
 	isMsgBoxOpen = false;
+}
+
+void Panel::openMsgBtn() {
+	isMsgBoxOpen = true;
 }
 
 bool Panel::getMsgOpen(){
