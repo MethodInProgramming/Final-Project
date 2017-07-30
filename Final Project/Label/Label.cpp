@@ -5,15 +5,9 @@ Label::Label(int width, string value):Control(width)
 {
 	ifSelected = false;
 	if (width - value.size() < 2) this->value = value;
-	else {
-		this->value = makeStringInTheMiddle(width, value);
-		
-	}
+	else {this->value = makeStringInTheMiddle(width, value);}
 }
 
-void Label::setValue(string val) {
-	value = makeStringInTheMiddle(getWidth() - 2, val);
-}
 
 void Label::draw(Graphics &graphics, int x , int y, size_t layer) {
 	if (getLayer() != layer) return;
@@ -22,6 +16,10 @@ void Label::draw(Graphics &graphics, int x , int y, size_t layer) {
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	graphics.write(MoveBodyLeft(),MoveBodyTop(), value);
 	graphics.resetColors();
+}
+
+void Label::setValue(string val) {
+	value = makeStringInTheMiddle(getWidth() - 2, val);
 }
 
 string Label::makeStringInTheMiddle(int width, string value) {
