@@ -33,15 +33,15 @@ namespace Testing
 		}
 		TEST_METHOD(setPositionCheck)
 		{
-			Assert::AreEqual(0, (int)box->getTop(), L"message");
-			Assert::AreEqual(0, (int)box->getLeft(), L"message");
-			Assert::AreEqual(1, (int)box->getBodyTop(), L"message");
-			Assert::AreEqual(1, (int)box->getBodyLeft(), L"message");
+			Assert::AreEqual(0, (int)box->MoveTop(), L"message");
+			Assert::AreEqual(0, (int)box->MoveLeft(), L"message");
+			Assert::AreEqual(1, (int)box->MoveBodyTop(), L"message");
+			Assert::AreEqual(1, (int)box->MoveBodyLeft(), L"message");
 			box->setLocation({ 2,2 });
-			Assert::AreEqual(2, (int)box->getTop(), L"message");
-			Assert::AreEqual(2, (int)box->getLeft(), L"message");
-			Assert::AreEqual(3, (int)box->getBodyTop(), L"message");
-			Assert::AreEqual(3, (int)box->getBodyLeft(), L"message");
+			Assert::AreEqual(2, (int)box->MoveTop(), L"message");
+			Assert::AreEqual(2, (int)box->MoveLeft(), L"message");
+			Assert::AreEqual(3, (int)box->MoveBodyTop(), L"message");
+			Assert::AreEqual(3, (int)box->MoveBodyLeft(), L"message");
 		}
 	};
 }

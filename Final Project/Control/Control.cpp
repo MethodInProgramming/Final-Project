@@ -1,9 +1,12 @@
 #include "Control.h"
 
-
-
 Control::Control(int _width) : 
-	width(_width), isFocused(false), ifFocusable(true), visible(true), height(1), layer(0){
+			width(_width), 
+			isSelected(false),
+			ifSelected(true),
+			visible(true), 
+			height(1),
+			layer(0){
 	setBorder(BorderType::None);
 	setLocation({ 0, 0 });
 	width += 2;
@@ -12,14 +15,13 @@ Control::Control(int _width) :
 	foreground = ForegroundColor::Green;
 }
 
-void Control::show(){
-	visible = true;
-	ifFocusable = true;
+ForegroundColor Control::getForeground() {
+	return foreground;
 }
-void Control::hide(){
-	visible = false;
-	ifFocusable = false;
+BackgroundColor Control::getBackGround() {
+	return background;
 }
+
 
 int Control::getLayer() {
 	return layer;
@@ -30,24 +32,26 @@ void Control::setLayer(int l) {
 }
 
 void Control::focus(){
-	isFocused = true;
+	isSelected = true;
 }
 void Control::unfocus(){
-	isFocused = false;
+	isSelected = false;
 }
 void Control::setForeground(ForegroundColor color){
 	foreground = color;
+}
+void Control::show() {
+	visible = true;
+	ifSelected = true;
+}
+void Control::hide() {
+	visible = false;
+	ifSelected = false;
 }
 void Control::setBackGround(BackgroundColor color){
 	background = color;
 }
 
-ForegroundColor Control::getForeground(){
-	return foreground;
-}
-BackgroundColor Control::getBackGround(){
-	return background;
-}
 
 void Control::setBorder(BorderType type){
 	borderType = type;
@@ -56,47 +60,41 @@ void Control::setBorder(BorderType type){
 BorderType Control::getBorderType(){
 	return borderType;
 }
-char Control::getBorderTypeHorizontal(){
-	switch (getBorderType())
-	{
-	case BorderType::Single:
-			return 196;
-			break;
-	case BorderType::Double:
+char Control::getBorderTHor(){
+
+	if (getBorderType() == BorderType::Double) {
 		return 205;
-		break;
-	default:
-		return NULL;
-		break;
 	}
-}
-char Control::getBorderTypeVertical(){
-	switch (getBorderType())
-	{
-	case BorderType::Single:
-		return 179;
-		break;
-	case BorderType::Double:
-		return 186; // ' || '
-		break;
-	default:
+	else if (getBorderType() == BorderType::Single) {
+		return 196;
+	}
+	else if (getBorderType() == BorderType::None) {
 		return NULL;
-		break;
 	}
 }
 
-vector<int> Control::getBorderTypeCorners(){
-	switch (getBorderType())
-	{
-	case BorderType::Single:
-		return { 218, 191 , 192, 217};
-		break;
-	case BorderType::Double:
-		return{ 201, 187, 200 , 188}; 
-		break;
-	default:
-		return{ 0 , 0, 0, 0};
-		break;
+char Control::getBorderTVer(){
+	
+	if (getBorderType() == BorderType::Single) {
+		return 179;
+	}
+	else if (getBorderType() == BorderType::Double) {
+		return 186;
+	}
+	else if (getBorderType() == BorderType::None) {
+		return NULL;
+	}
+}
+
+vector<int> Control::getBorderTCor(){
+	if (getBorderType() == BorderType::Single) {
+		return{ 218, 191 , 192, 217 };
+	}
+	else if (getBorderType() == BorderType::Double) {
+		return{ 201, 187, 200 , 188 };
+	}
+	else if (getBorderType() == BorderType::None) {
+		return{0,0,0,0};
 	}
 }
 void Control::setLocation(COORD coord){
@@ -114,17 +112,17 @@ void Control::draw(Graphics &graphics, int x, int y, size_t w){
 		graphics.setForeground(graphics.convertToColor(getForeground()));
 	}
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
-	string str(width, getBorderTypeHorizontal());
-	vector<int> corners = getBorderTypeCorners();
-	str[0] = corners[0];
-	str[width - 1] = corners[1];
-	graphics.write(getLeft(), getTop(), str);
+		string str(width, getBorderTHor());
+			vector<int> corners = getBorderTCor();
+			str[0] = corners[0];
+			str[width - 1] = corners[1];
+				graphics.write(MoveLeft(), MoveTop(), str);
 	
 	for (int i = 0; i < height - 1; i++){
 		string strv(width, ' ');
-		strv[0] = getBorderTypeVertical();
-		strv[width-1] = getBorderTypeVertical();
-		graphics.write(getLeft(), (getTop() + 1 ) + i, strv);
+		strv[0] = getBorderTVer();
+		strv[width-1] = getBorderTVer();
+		graphics.write(MoveLeft(), (MoveTop() + 1 ) + i, strv);
 	}
 	str[0] = corners[2];
 	str[width - 1] = corners[3];
@@ -134,44 +132,45 @@ void Control::draw(Graphics &graphics, int x, int y, size_t w){
 
 void Control::mousePressed(short x, short y, bool isLeft){
 
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
+	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth())) return;
+	if (y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) return;
 
 	Control::setFocus(this);
 }
 
-bool Control::canGetFocus(){
-	return ifFocusable;
-}
 bool Control::validSpace(Control* c){
 
-	if ((c->getLeft() + c->getWidth()) < getLeft() ||
-		(getLeft() + getWidth()) < c->getLeft()) {
+	if ((c->MoveLeft() + c->getWidth()) < MoveLeft() ||
+		(MoveLeft() + getWidth()) < c->MoveLeft()) {
 		return true;
 	}
-	else if ( (c->getTop() + c->getHeight() ) > getTop() ||
-		(getTop() + getHeight()) < c->getTop()) {
+	else if ( (c->MoveTop() + c->getHeight() ) > MoveTop() ||
+		(MoveTop() + getHeight()) < c->MoveTop()) {
 		return true;;
 	}
 	return false;
 }
 bool Control::isFocus(){
-	return isFocused;
+	return isSelected;
 }
 bool Control::isVisible(){
 	return visible;
 }
-short Control::getLeft(){
+bool Control::canGetFocus() {
+	return ifSelected;
+}
+
+short Control::MoveLeft(){
 	return location.X;
 }
-short Control::getTop(){
+short Control::MoveTop(){
 	return location.Y;
 }
 
-short Control::getBodyLeft(){
+short Control::MoveBodyLeft(){
 	return bodyLocation.X;
 }
-short Control::getBodyTop(){
+short Control::MoveBodyTop(){
 	return bodyLocation.Y;
 }
 

@@ -7,15 +7,16 @@ using namespace std;
 
 class ButtonItem : public Button
 {
+	size_t index;
 	string chekeForText;
 	bool isCheck;
-	size_t index;
+	
 public:
-	ButtonItem(string text, int width, size_t index);
-	bool isChecked();
-	void toggle();
 	void draw(Graphics &graphics, int x, int y, size_t w);
+	ButtonItem(string text, int width, size_t index);
+	void toggle();
 	size_t getIndex();
+	bool isChecked();
 	~ButtonItem();
 };
 

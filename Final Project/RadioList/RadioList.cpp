@@ -9,7 +9,7 @@ RadioList::RadioList(int height, int width, vector<string> options) : ListPanel(
 		btn->setBorder(BorderType::Single);
 		SelectListener* lsnr = new SelectListener(*this);
 		btn->addListener(*lsnr);
-		addControl(btn, getBodyLeft(), getBodyTop() + (i * 3));
+		addControl(btn, MoveBodyLeft(), MoveBodyTop() + (i * 3));
 	}
 }
 

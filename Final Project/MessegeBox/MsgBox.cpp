@@ -4,7 +4,7 @@
 MsgBox::MsgBox(int height, int width) : Panel(height, width)
 {
 	setLayer(2);
-	ifFocusable = false;
+	ifSelected = false;
 	Label *title = new Label(width - 2, "Are you Sure?");
 	Label *text = new Label(width - 2, "Press OK");
 	Button *okBtn = new Button(width / 2, Label::makeStringInTheMiddle(width/2, "OK!"));
@@ -22,8 +22,8 @@ MsgBox::MsgBox(int height, int width) : Panel(height, width)
 }
 
 void MsgBox::mousePressed(short x, short y, bool isLeft) {
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth()) ||
-		y < this->getTop() || (y > this->getTop() + this->getHeight())) {
+	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth()) ||
+		y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) {
 		if (isVisible()){
 			hide();
 		}

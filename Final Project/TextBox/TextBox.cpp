@@ -21,7 +21,7 @@ void TextBox::draw(Graphics& graphics, int x, int y, size_t layer) {
 	if (toPrint.length() < getWidth() - 2) {
 		toPrint = toPrint + string(getWidth() - 2 - toPrint.length(), ' ');
 	}
-	graphics.write(getBodyLeft(), getBodyTop(), toPrint);
+	graphics.write(MoveBodyLeft(), MoveBodyTop(), toPrint);
 	if (isFocus()) {
 		if(Control::getFocus() == this) graphics.setCursorVisibility(true);
 	} 
@@ -34,12 +34,12 @@ int TextBox::getCurserPosition() {
 
 void TextBox::moveCurser(Graphics g){
 	if (getCurserPosition() > getWidth()-2){
-		g.moveTo(getBodyLeft() + getCurserPosition() - 2, getBodyTop());
+		g.moveTo(MoveBodyLeft() + getCurserPosition() - 2, MoveBodyTop());
 	}
 	else if (curserPosition == 1){
-		g.moveTo(getBodyLeft(), getBodyTop());
+		g.moveTo(MoveBodyLeft(), MoveBodyTop());
 	} else {
-		g.moveTo(getBodyLeft() + getCurserPosition() - 1, getBodyTop());
+		g.moveTo(MoveBodyLeft() + getCurserPosition() - 1, MoveBodyTop());
 	}
 }
 
@@ -88,8 +88,8 @@ void TextBox::mousePressed(short x, short y, bool b){
 
 
 void TextBox::moveRight(){
-	int x = getBodyLeft() + getWidth();
-	if (getBodyLeft() + curserPosition > getBodyLeft() +  getWidth() - 3) return;
+	int x = MoveBodyLeft() + getWidth();
+	if (MoveBodyLeft() + curserPosition > MoveBodyLeft() +  getWidth() - 3) return;
 	curserPosition++;
 }
 

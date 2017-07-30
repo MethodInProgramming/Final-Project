@@ -22,10 +22,10 @@ bool Panel::addControl(Control *control, short x, short y) {
 }
 
 bool Panel::validSpace(Control* c) {
-	short bodyTop = getBodyTop();
-	short bodyLeft = getBodyLeft();
-	short controllerTop = c->getTop();
-	short controllerLeft = c->getLeft();
+	short bodyTop = MoveBodyTop();
+	short bodyLeft = MoveBodyLeft();
+	short controllerTop = c->MoveTop();
+	short controllerLeft = c->MoveLeft();
 
 	if (controllerTop < bodyTop || controllerLeft < bodyLeft) return false;
 	if ((controllerTop + c->getHeight()) > (bodyTop + this->getHeight() - 2)) return false;
@@ -49,8 +49,8 @@ bool Panel::validSpaceWithControllers(Control* c) {
 }
 
 void Panel::mousePressed(short x, short y, bool isLeft) {
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth())) return;
-	if (y < this->getTop() || (y > this->getTop() + this->getHeight())) return;
+	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth())) return;
+	if (y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) return;
 
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
@@ -60,26 +60,26 @@ void Panel::mousePressed(short x, short y, bool isLeft) {
 
 void Panel::draw(Graphics &graphics, int x, int y, size_t layer) {
 	if (!isVisible()) return;
-	if (layer == getLayer()) Control::draw(graphics, getLeft(), getTop(), layer);
+	if (layer == getLayer()) Control::draw(graphics, MoveLeft(), MoveTop(), layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 
 	int size = controls.size();
 	for (int i = 0; i < size; i++) {
-		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
+		graphics.moveTo(controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop());
+		controls[i]->draw(graphics, controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop(), layer);
 	}
 	graphics.resetColors();
 }
 
 void Panel::setLocation(COORD coord) {
-	COORD tmp = {getBodyLeft(),getBodyTop()};
+	COORD tmp = {MoveBodyLeft(),MoveBodyTop()};
 	short moveVer, moveHer;
 	Control::setLocation(coord);
 	int size = controls.size();
 	for (size_t i = 0; i < size; i++) {
-		moveVer = controls[i]->getBodyTop() - tmp.Y;
-		moveHer = controls[i]->getBodyLeft() - tmp.X;
+		moveVer = controls[i]->MoveBodyTop() - tmp.Y;
+		moveHer = controls[i]->MoveBodyLeft() - tmp.X;
 		controls[i]->setLocation({ coord.X + moveHer, coord.Y + moveVer});
 	}
 }

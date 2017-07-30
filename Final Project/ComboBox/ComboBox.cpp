@@ -1,8 +1,12 @@
 #include "ComboBox.h"
 #include <iostream>
 
-ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), width, options), 
-						closeHeight(5), isOpen(false), choosenIndex(0){
+ComboBox::ComboBox(int width,
+	vector<string> options) : ListPanel(getHeight(),
+		width, 
+		options), 
+	closeHeight(5),
+	isOpen(false), choosenIndex(0){
 	setLayer(1);
 	int len = options.size();
 	openHeight = (len + 1) * 3 + 2;
@@ -11,14 +15,14 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 	Label *choosen = new Label(getWidth() - 7, options[0]);
 	choosen->setLayer(1);
 	choosen->setBorder(BorderType::Single);
-	addControl(choosen, getBodyLeft(), getBodyTop());
+	addControl(choosen, MoveBodyLeft(), MoveBodyTop());
 	Button *toggleBtn = new Button(1, "+");
 	toggleBtn->setBackGround(BackgroundColor::Black);
 	toggleBtn->setBorder(BorderType::Single);
 	ToggleListener* lsnr = new ToggleListener(*this);
 	toggleBtn->addListener(*lsnr);
 	toggleBtn->setLayer(1);
-	addControl(toggleBtn, getBodyLeft() + getWidth() - 5, getBodyTop());
+	addControl(toggleBtn, MoveBodyLeft() + getWidth() - 5, MoveBodyTop());
 
 	string str = string(Control::getWidth(),' ');
 	for (int i = 0; i < len; i++) {
@@ -28,7 +32,7 @@ ComboBox::ComboBox(int width, vector<string> options) : ListPanel(getHeight(), w
 		btn->setBorder(BorderType::None);
 		SelectListener* lsnr = new SelectListener(*this);
 		btn->addListener(*lsnr);
-		addControl(btn, getBodyLeft(), getBodyTop() + ((i+1) * 3));
+		addControl(btn, MoveBodyLeft(), MoveBodyTop() + ((i+1) * 3));
 	}
 
 	setHeight(closeHeight);
@@ -51,18 +55,18 @@ void ComboBox::setSelectedIndex(size_t index) {
 void ComboBox::draw(Graphics &graphics, int, int, size_t layer) {
 	int la = getLayer();
 	if (getLayer() != layer) return;
-	Control::draw(graphics, getLeft(), getTop(), layer);
+	Control::draw(graphics, MoveLeft(), MoveTop(), layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
 	for (int i = 0; i < 2; i++) {
-		graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-		controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
+		graphics.moveTo(controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop());
+		controls[i]->draw(graphics, controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop(), layer);
 	}
 	if (isOpen) {
 		int size = controls.size();
 		for (int i = 2; i < size; i++) {
-			graphics.moveTo(controls[i]->getBodyLeft(), controls[i]->getBodyTop());
-			controls[i]->draw(graphics, controls[i]->getBodyLeft(), controls[i]->getBodyTop(), layer);
+			graphics.moveTo(controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop());
+			controls[i]->draw(graphics, controls[i]->MoveBodyLeft(), controls[i]->MoveBodyTop(), layer);
 		}
 	}
 	graphics.resetColors();
@@ -97,13 +101,13 @@ void ComboBox::onEnterKey(){
 }
 
 void ComboBox::mousePressed(short x, short y , bool isLeft) {
-	if (x < this->getLeft() || (x > this->getLeft() + this->getWidth()) ||
-		y < this->getTop() || (y > this->getTop() + this->getHeight())) {
+	if (x < this->MoveLeft() || (x > this->MoveLeft() + this->getWidth()) ||
+		y < this->MoveTop() || (y > this->MoveTop() + this->getHeight())) {
 		closeList();
 		return;
 	}
 	Control::setFocus(this);
-	if (x == getBodyLeft() + getWidth() - 5 && y == getBodyTop()) {
+	if (x == MoveBodyLeft() + getWidth() - 5 && y == MoveBodyTop()) {
 		controls[1]->mousePressed(x, y, isLeft);
 	}
 	int size = controls.size();

@@ -1,8 +1,9 @@
 #pragma once
 
 #include <Windows.h> 
-#include <vector>
 #include "../Graphics/Graphics.h"
+#include <vector>
+
 
 using namespace std;
 
@@ -10,15 +11,17 @@ enum class BorderType {Single, Double, None};
 
 class Control
 {
-	int width, height, layer;
-	bool isFocused, visible;
+	bool isSelected, visible;
 	COORD location;
 	COORD bodyLocation;
 	ForegroundColor foreground;
 	BackgroundColor background;
 	BorderType borderType;
+	int width, height, layer;
+
 protected:
-	bool ifFocusable;
+	bool ifSelected;
+
 public:
 	Control(int width);
 	virtual void show();
@@ -27,32 +30,32 @@ public:
 	void setLayer(int);
 	void setForeground(ForegroundColor color);
 	void setBackGround(BackgroundColor color);
-	ForegroundColor getForeground();
-	BackgroundColor getBackGround();
 	void setBorder(BorderType type);
 	virtual void setLocation(COORD);
+	ForegroundColor getForeground();
+	BackgroundColor getBackGround();
 	COORD getLocation();
-	virtual void focus();
-	virtual void unfocus();
 	BorderType getBorderType();
-	char getBorderTypeHorizontal();
-	char getBorderTypeVertical();
-	vector<int> getBorderTypeCorners();
+	char getBorderTHor();
+	char getBorderTVer();
+	vector<int> getBorderTCor();
 	virtual void draw(Graphics& graphics, int, int, size_t);
 	virtual void keyDown(WORD, CHAR) = 0;
 	virtual void mousePressed(short, short, bool) = 0;
+	virtual void focus();
+	virtual void unfocus();
 	bool canGetFocus();
-	bool validSpace(Control* c); //on me
+	bool validSpace(Control* c);
 	bool isFocus();
 	bool isVisible();
-	short getLeft();
-	short getTop();
-	short getBodyLeft();
-	short getBodyTop();
-	int getWidth();
-	int getHeight();
+	short MoveLeft();
+	short MoveTop();
+	short MoveBodyLeft();
+	short MoveBodyTop();
 	void setHeight(int);
 	void setWidth(int);
+	int getWidth();
+	int getHeight();
 	virtual void getAllControls(vector<Control *> &controls) {}
 
 	static void setFocus(Control* c);

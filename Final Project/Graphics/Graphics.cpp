@@ -94,7 +94,6 @@ void Graphics::updateConsoleAttributes(){
 	case Color::Red:	attributes |= BACKGROUND_RED; break;
 	case Color::Cyan:	attributes |= BACKGROUND_BLUE | BACKGROUND_GREEN; break;
 	case Color::Purple:	attributes |= BACKGROUND_BLUE | BACKGROUND_RED; break;
-	case Color::Orange: attributes |= BACKGROUND_GREEN | BACKGROUND_RED; break;
 	case Color::White:	attributes |= BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED; break;
 	}
 
@@ -110,32 +109,56 @@ bool isInside(int x, int y, int left, int top, int width, int height)
 
 Color Graphics::convertToColor(BackgroundColor b) {
 	Color color = Color::Black;
-	switch (b)
-	{
-	case BackgroundColor::Black:	color = Color::Black; break;
-	case BackgroundColor::Blue:		color = Color::Blue; break;
-	case BackgroundColor::Green:	color = Color::Green; break;
-	case BackgroundColor::Red:		color = Color::Red; break;
-	case BackgroundColor::Cyan:		color = Color::Cyan; break;
-	case BackgroundColor::Purple:	color = Color::Purple; break;
-	case BackgroundColor::Orange:	color = Color::Orange; break;
-	case BackgroundColor::White:	color = Color::White; break;
+	
+	if (b == BackgroundColor::Black) {
+		color = Color::Black;
 	}
+	else if (b == BackgroundColor::Blue) {
+		color = color = Color::Blue;
+	}
+	else if (b == BackgroundColor::Red) {
+		color = color = Color::Red;
+	}
+	else if (b == BackgroundColor::Green) {
+		color = color = Color::Green;
+	}
+	else if (b == BackgroundColor::Purple) {
+		color = color = Color::Purple;
+	}
+	else if (b == BackgroundColor::Cyan) {
+		color = color = Color::Cyan;
+	}
+	else if (b == BackgroundColor::White) {
+		color = color = Color::White;
+	}
+
 	return color;
 }
 
 Color Graphics::convertToColor(ForegroundColor f) {
 	Color color = Color::White;
-	switch (f)
-	{
-		case ForegroundColor::Black:	color = Color::Black; break;
-		case ForegroundColor::Blue:		color = Color::Blue; break;
-		case ForegroundColor::Green:	color = Color::Green; break;
-		case ForegroundColor::Red:		color = Color::Red; break;
-		case ForegroundColor::Cyan:		color = Color::Cyan; break;
-		case ForegroundColor::Purple:	color = Color::Purple; break;
-		case ForegroundColor::Orange:	color = Color::Orange; break;
-		case ForegroundColor::White:	color = Color::White; break;
+	
+	if (f == ForegroundColor::Black) {
+		color = Color::Black;
 	}
+	else if (f == ForegroundColor::Blue) {
+		color = Color::Blue;
+	}
+	else if (f == ForegroundColor::Green) {
+		color = Color::Green;
+	}
+	else if (f == ForegroundColor::Red) {
+		color = Color::Red;
+	}
+	else if (f == ForegroundColor::Cyan) {
+		color = Color::Cyan;
+	}
+	else if (f == ForegroundColor::Purple) {
+		color = Color::Purple;
+	}
+	else if (f == ForegroundColor::White) {
+		color = Color::White;
+	}
+
 	return color;
 }

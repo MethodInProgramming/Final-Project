@@ -23,8 +23,8 @@ public:
 	Button(int width, string text);
 
 	void draw(Graphics &graphics, int x, int y, size_t w);
-	void mousePressed(short, short, bool);
 	void setValue(string value);
+	void mousePressed(short, short, bool);
 	string getValue();
 	void addListener(MouseListener&);
 	void keyDown(WORD, CHAR);

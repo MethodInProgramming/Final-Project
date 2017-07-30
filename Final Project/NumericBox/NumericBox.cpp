@@ -14,10 +14,10 @@ NumericBox::NumericBox(int width, int min, int max):Panel(5,width)
 	Button *plusBtn = new Button(1,"+");
 	plusBtn->addListener(*plusListener);
 	
-	addControl(minusBtn, getBodyLeft(), getBodyTop());
+	addControl(minusBtn, MoveBodyLeft(), MoveBodyTop());
 	this->min = min;
-	addControl(labelVal, getBodyLeft() + minusBtn->getWidth(), getBodyTop());
-	addControl(plusBtn, labelVal->getLeft() + labelVal->getWidth(), getBodyTop());
+	addControl(labelVal, MoveBodyLeft() + minusBtn->getWidth(), MoveBodyTop());
+	addControl(plusBtn, labelVal->MoveLeft() + labelVal->getWidth(), MoveBodyTop());
 	this->max = max;
 }
 

@@ -40,9 +40,7 @@ void EventHandler::run(Control &c)
 				auto chr = record.Event.KeyEvent.uChar.AsciiChar;
 				if (code == VK_TAB) {
 					if (!Panel::getMsgOpen()){
-						moveFocus(c, f);
-					}
-				}
+						moveFocus(c, f);}}
 				else
 					f->keyDown(code, chr);
 				redraw = true;

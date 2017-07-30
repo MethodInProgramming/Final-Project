@@ -3,7 +3,7 @@
 
 Label::Label(int width, string value):Control(width)
 {
-	ifFocusable = false;
+	ifSelected = false;
 	if (width - value.size() < 2) this->value = value;
 	else {
 		this->value = makeStringInTheMiddle(width, value);
@@ -20,7 +20,7 @@ void Label::draw(Graphics &graphics, int x , int y, size_t layer) {
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
-	graphics.write(getBodyLeft(),getBodyTop(), value);
+	graphics.write(MoveBodyLeft(),MoveBodyTop(), value);
 	graphics.resetColors();
 }
 

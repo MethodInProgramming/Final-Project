@@ -28,7 +28,7 @@ int main(void){
 
 	Label lName(20, "First Name: ");
 	Label lLastName(20, "Last Name: ");
-	Label lCity(20, "Company:");
+	Label lCompany(20, "Company:");
 	Label lSex(20, "Sex:");
 	Label lFavoritesMovies(20, "Favorive Movies: ");
 	Label lAge(20, "Age:");
@@ -38,14 +38,14 @@ int main(void){
 	TextBox tLastName(25);
 	tLastName.setValue("Amitai");
 	tLastName.setBorder(BorderType::Double);
-	ComboBox cGenre(20, { "DC", "Marvel", "WB","Sony","Paramount" });
-	cGenre.setSelectedIndex(1);
-	cGenre.setBorder(BorderType::Single);
+	ComboBox cCompany(20, { "DC", "Marvel", "WB","Sony","Paramount" });
+	cCompany.setSelectedIndex(1);
+	cCompany.setBorder(BorderType::Single);
 	RadioList rSex(8, 15, { "Male", "Female" });
 	rSex.setBorder(BorderType::Single);
-	CheckList clInterests(11, 20, { "Captain America", "Batman", "Spiderman" });
-	clInterests.selectIndex(1);
-	clInterests.setBorder(BorderType::Double);
+	CheckList clMovies(11, 20, { "Captain America", "Batman", "Spiderman" });
+	clMovies.selectIndex(1);
+	clMovies.setBorder(BorderType::Double);
 	NumericBox nAge(15, 18, 120);
 	nAge.setValue(28);
 	nAge.setBorder(BorderType::Single);
@@ -62,22 +62,19 @@ int main(void){
 	bSubmit.setBorder(BorderType::Double);
 
 
-	Panel main(50, 70);
-	main.addControl(&msgBox, 16, 16);
-	main.addControl(&lName, 2, 3);
-	main.addControl(&lLastName, 2, 6);
-	main.addControl(&lCity, 2, 9);
-	main.addControl(&lSex, 2, 14);
-	main.addControl(&lFavoritesMovies, 1, 21);
-	main.addControl(&lAge, 1, 32);
-	main.addControl(&tName, 25, 2);
-	main.addControl(&tLastName, 25, 5);
-	main.addControl(&cGenre, 25, 8);
-	main.addControl(&rSex, 25, 13);
-	main.addControl(&clInterests, 25, 21);
-	main.addControl(&nAge, 25, 32);
-
-	main.addControl(&bSubmit, 27, 39);
+	Panel main(70, 100);
+	main.addControl(&msgBox, 26, 40);
+	main.addControl(&lName, 15, 3);
+	main.addControl(&tName, 15, 5);
+	main.addControl(&lLastName, 15, 8);
+	main.addControl(&tLastName, 15, 10);
+	main.addControl(&lCompany, 15, 13);
+	main.addControl(&cCompany, 15, 15);
+	main.addControl(&lSex, 15, 20);
+	main.addControl(&rSex, 17, 22);
+	main.addControl(&lFavoritesMovies, 15, 30);
+	main.addControl(&clMovies, 15, 32);
+	main.addControl(&bSubmit, 17, 45);
 	Control::setFocus(&tName);
 	EventHandler Handler;
 	Handler.run(main);

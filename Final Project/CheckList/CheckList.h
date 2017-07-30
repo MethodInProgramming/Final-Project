@@ -19,10 +19,10 @@ class CheckList : public ListPanel
 protected:
 	void onEnterKey();
 public:
-	CheckList(int height, int width, vector<string> options); // checklist constructor
+	CheckList(int height, int width, vector<string> options); 
 	vector<size_t> getSelectedIndices(); 
+	void mousePressed(short, short, bool);
 	void selectIndex(size_t index);
 	void disableIndex(size_t index);
-	void mousePressed(short, short, bool);
 };
 

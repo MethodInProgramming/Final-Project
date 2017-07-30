@@ -9,24 +9,21 @@ void Button::draw(Graphics& graphics, int x, int y, size_t layer){
 	Control::draw(graphics, x, y, layer);
 	graphics.setBackground(graphics.convertToColor(getBackGround()));
 	graphics.setForeground(graphics.convertToColor(getForeground()));
-	graphics.write(getBodyLeft(), getBodyTop(), getValue());
+	graphics.write(MoveBodyLeft(), MoveBodyTop(), getValue());
 	graphics.resetColors();
 }
 
-void Button::mousePressed(short x, short y, bool isLeft){
-	if (clickable && 
-		x > getLeft() && 
-		x < getLeft() + getWidth() &&
-		y > getTop() && 
-		y < getTop() + getHeight()){
 
-		listener->mousePressed(*this, x, y, isLeft);
-	}
-}
 
 void Button::keyDown(WORD click, CHAR chr){
 	if (click == VK_RETURN) {
 		listener->mousePressed(*this, 0, 0, true);
+	}
+}
+
+void Button::mousePressed(short a, short b, bool isLeft) {
+	if (clickable && a > MoveLeft() && a < MoveLeft() + getWidth() && b > MoveTop() && b < MoveTop() + getHeight()) {
+		listener->mousePressed(*this, a, b, isLeft);
 	}
 }
 

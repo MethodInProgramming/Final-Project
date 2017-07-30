@@ -9,7 +9,7 @@ bool ButtonItem::isChecked(){
 }
 void ButtonItem::draw(Graphics &graphics, int x, int y, size_t layer){
 	if (getLayer() != layer) return;
-	Control::draw(graphics, getLeft(), getTop(), layer);
+	Control::draw(graphics, MoveLeft(), MoveTop(), layer);
 	if (isFocus()){
 		graphics.setBackground(graphics.convertToColor(getForeground()));
 		graphics.setForeground(graphics.convertToColor(getBackGround()));
@@ -20,7 +20,7 @@ void ButtonItem::draw(Graphics &graphics, int x, int y, size_t layer){
 		graphics.setBackground(graphics.convertToColor(getBackGround()));
 		graphics.setForeground(graphics.convertToColor(getForeground()));
 	}
-	graphics.write(getBodyLeft(), getBodyTop(), getValue());
+	graphics.write(MoveBodyLeft(), MoveBodyTop(), getValue());
 	graphics.resetColors();
 }
 void ButtonItem::toggle(){
